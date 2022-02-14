@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useReducer } from 'react'
 
 const pinkRGB = `rgb(236, 72, 153)`
 
@@ -32,6 +33,28 @@ export default function Counter() {
     setCount(0)
   }
 
+  // const initialState = { count: 0 }
+  // function reducter(state, action) {
+  //   switch (action.type) {
+  //     case 'increment':
+  //       return { count: state.count + 1 }
+  //     case 'decrement':
+  //       return { count: state.count - 1 }
+  //     default:
+  //       throw new Error()
+  //   }
+  // }
+
+  // function Counter() {
+  //   const [state, dispatch] = useReducer(reducer, initialState)
+  //   return (
+  //     <>
+  //       Count: {state.count}
+  //       <button onClick={() => dispatch({ type: 'decrement' })}>-</button>
+  //       <button onClick={() => dispatch({type: 'increment'})}>+</button>
+  //     </>
+  //   )
+  // }
   return (
     <main className="bg-black bg-opacity-90 min-h-screen flex flex-col items-center justify-center text-4xl text-pink-500">
       <h1 className="mb-5" style={{ color: currentColor }}>
