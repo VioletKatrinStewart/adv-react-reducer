@@ -1,19 +1,35 @@
 import { useReducer, useState } from 'react'
 
 const pinkRGB = `rgb(236, 72, 153)`
-const initialState = { count: 0 }
+const initialState = { count: 0, color: pinkRGB }
 
 export default function Counter() {
   const [currentColor, setCurrentColor] = useState(pinkRGB)
 
+  function getColor(count) {
+    if (count === 0) {
+      setCurrentColor(pinkRGB)
+    }
+
+    if (count > 0) {
+      setCurrentColor(`rgb(52, 211, 153)`)
+    }
+
+    if (count < 0) {
+      setCurrentColor(`rgb(239, 68, 68)`)
+    }
+
+    return pinkRGB
+  }
+
   function reducer(state, action) {
     switch (action.type) {
       case 'increment':
-        return { ...state, count: state.count + 1 }
+        return { ...state, count: state.count + 1, color: getColor(state.count + 1) }
       case 'decrement':
-        return { ...state, count: state.count - 1 }
+        return { ...state, count: state.count - 1, color: getColor(state.count - 1) }
       case 'reset':
-        return { ...state, count: 0 }
+        return { ...state, count: 0, color: getColor(0) }
       default:
         throw Error(`Unknown action: ${action.type}`)
     }
